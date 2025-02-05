@@ -2,6 +2,8 @@ const pokemonDiv = document.getElementById("pokemon");
 const drawBtn = document.getElementById("draw");
 document.getElementById("reset");
 
+let currentPokemon = null;
+
 // 포켓몬 데이터 가져오기
 async function fetchPokemonData() {
     // 1 - 50 까지 난수 생성
@@ -47,3 +49,21 @@ function drawPokemon(pokemon) {
         pokemonDiv.appendChild(pokemonName);
     };
 }
+
+// 포켓몬 뽑기 버튼
+drawBtn.addEventListener("click", async (e) => {
+    if (currentPokemon) {
+        console.log("이미 뽑은 포켓몬입니다.");
+        return;
+    }
+
+    currentPokemon = await fetchPokemonData(); // API 데이터 가져오기
+    drawPokemon(currentPokemon);               // 화면에 표시
+});
+
+// 다시 뽑기 버튼
+resetBtn.addEventListener("click", (e) => {
+    currentPokemon = null; // 현재 포켓몬 초기화
+    pokemonDiv.innerHTML = "<img class='poketball' src='/image/poketball.png'>"; // 화면 초기화
+    console.log("다시 뽑기 준비 완료");
+});
