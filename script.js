@@ -1,6 +1,6 @@
 const pokemonDiv = document.getElementById("pokemon");
 const drawBtn = document.getElementById("draw");
-document.getElementById("reset");
+const resetBtn = document.getElementById("reset");
 
 let currentPokemon = null;
 
@@ -28,7 +28,6 @@ function drawPokemon(pokemon) {
     const pokemonImg = document.createElement("img");
     pokemonImg.classList.add("pokemon-image");
     pokemonImg.src = pokemon.img;
-    pokemonImg.alt = pokemon.name;
 
     const pokemonName = document.createElement("h2");
     pokemonName.classList.add("pokemon-name");
@@ -51,7 +50,7 @@ function drawPokemon(pokemon) {
 }
 
 // 포켓몬 뽑기 버튼
-drawBtn.addEventListener("click", async (e) => {
+drawBtn.addEventListener("click", async (_e) => {
     if (currentPokemon) {
         console.log("이미 뽑은 포켓몬입니다.");
         return;
@@ -62,8 +61,9 @@ drawBtn.addEventListener("click", async (e) => {
 });
 
 // 다시 뽑기 버튼
-resetBtn.addEventListener("click", (e) => {
+resetBtn.addEventListener("click", () => {
     currentPokemon = null; // 현재 포켓몬 초기화
     pokemonDiv.innerHTML = "<img class='monster-ball' src='/images/monster-ball.png'>"; // 화면 초기화
     console.log("다시 뽑기 준비 완료");
 });
+
