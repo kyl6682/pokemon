@@ -64,6 +64,6 @@ drawBtn.addEventListener("click", async (e) => {
 // 다시 뽑기 버튼
 resetBtn.addEventListener("click", (e) => {
     currentPokemon = null; // 현재 포켓몬 초기화
-    pokemonDiv.innerHTML = "<img class='poketball' src='/image/poketball.png'>"; // 화면 초기화
+    pokemonDiv.innerHTML = "<img class='monster-ball' src='/images/monster-ball.png'>"; // 화면 초기화
     console.log("다시 뽑기 준비 완료");
 });
